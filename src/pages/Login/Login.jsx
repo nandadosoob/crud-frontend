@@ -1,10 +1,14 @@
-import { Pagina  } from "../../components/Pagina";
+import { Pagina } from "../../components/Pagina";
 
-export function Login(){
+export function Login() {
 
-    <Pagina>
-        <div className="bg-blue-600">
-            <h1>oi</h1>
-        </div>
-    </Pagina>
+
+    return (
+
+        <Pagina>
+            <div className="bg-blue-600">
+                <h1>oi</h1>
+            </div>
+        </Pagina>
+    )
 }

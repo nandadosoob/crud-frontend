@@ -11,7 +11,7 @@ import { HomeMedicos } from './pages/HomeMedicos/HomeMedicos.jsx'
 
 
 const rotas = createBrowserRouter(createRoutesFromElements(
-  <Route path="/" element={<Login/>}>
+  <Route path="/">
     <Route index element={<Login/>} />
     <Route path="login" element={<Login/>} />
     <Route path="novaConta" element={<NovaConta/>} />
