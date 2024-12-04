@@ -5,7 +5,7 @@ export function Login() {
     <div className="flex min-h-screen">
       {/* Coluna esquerda com o formulário */}
       <div className="w-full md:w-1/2 flex flex-col justify-center items-center p-8 bg-white">
-        <h1 className="text-2xl font-bold text-pink-400 mb-4">DF Modas</h1>
+        <h1 className="text-2xl font-bold text-pink-300 mb-4">DF Modas</h1>
         <p className="text-gray-700 text-center mb-6">Acesse sua conta.</p>
 
         <form className="w-full max-w-sm">
@@ -27,7 +27,7 @@ export function Login() {
           </div>
           <button
             type="submit"
-            className="w-full bg-pink-500 text-white py-2 rounded-lg font-semibold hover:bg-pink-600 transition"
+            className="w-full bg-pink-300 text-white py-2 rounded-lg font-semibold hover:bg-pink-400 transition"
           >
             Acessar
           </button>
@@ -42,9 +42,9 @@ export function Login() {
       </div>
 
       {/* Coluna direita com a imagem */}
-      <div className="hidden md:block md:w-1/2 bg-pink-500 relative">
+      <div className="hidden md:block md:w-1/2 bg-pink-300 relative">
         <img
-          src="/.../assets/fundo.png"
+          src="moda.jpeg"
           className="absolute inset-0 w-full h-full object-cover"
         />
       </div>
