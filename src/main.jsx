@@ -5,8 +5,8 @@ import App from './App.jsx'
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
 import { Login } from './pages/Login/Login.jsx'
 import { NovaConta } from './pages/NovaConta/NovaConta.jsx'
-import { HomeAgendamentos } from './pages/HomeAgendamentos/HomeAgendamentos.jsx'
-import { HomeMedicos } from './pages/HomeMedicos/HomeMedicos.jsx'
+import { HomeEncomendas } from './pages/HomeEncomendas/HomeEncomendas.jsx'
+import { HomeEstilistas } from './pages/HomeEstilistas/HomeEstilistas.jsx'
 
 
 
@@ -15,8 +15,8 @@ const rotas = createBrowserRouter(createRoutesFromElements(
     <Route index element={<Login/>} />
     <Route path="login" element={<Login/>} />
     <Route path="novaConta" element={<NovaConta/>} />
-    <Route path="homeAgendamento" element={<HomeAgendamentos/>} />
-    <Route path="homeMedicos" element={<HomeMedicos/>} />
+    <Route path="homeEncomendas" element={<HomeEncomendas/>} />
+    <Route path="homeEstilistas" element={<HomeEstilistas/>} />
 
     {/* <Route path="*" element={<Pagina404/>} /> */}
   </Route>
