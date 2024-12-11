@@ -119,18 +119,18 @@ export default function NovaEncomenda() {
           </div>
 
           <div className="flex space-x-4">
-            <button
-              type="submit"
-              className="w-full bg-pink-700 text-white py-2 px-4 rounded-md font-medium hover:bg-pink-800 focus:outline-none focus:ring focus:ring-pink-200"
-            >
-              Registrar Pedido
-            </button>
             <Link
               to="/HomeEncomendas"
               className="w-full bg-gray-600 text-white py-2 px-4 rounded-md font-medium hover:bg-gray-700 text-center focus:outline-none focus:ring focus:ring-gray-200"
             >
               Cancelar
             </Link>
+            <button
+              type="submit"
+              className="w-full bg-pink-700 text-white py-2 px-4 rounded-md font-medium hover:bg-pink-800 focus:outline-none focus:ring focus:ring-pink-200"
+            >
+              Registrar Pedido
+            </button>
           </div>
         </form>
       </div>
