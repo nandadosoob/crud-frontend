@@ -9,7 +9,7 @@ export function HomeEncomendas() {
     {
       id: 1,
       cliente: "Heber Stein Mazutti",
-      estilista: "Flávia Cristina",
+      estilista: "Vivienne Westwood",
       encomenda: "Vestido Sob Medida",
       dataHora: "01/10/2024 - 08:30",
       valor: "R$ 500,00",
@@ -17,7 +17,7 @@ export function HomeEncomendas() {
     {
       id: 2,
       cliente: "Marcos Antunes",
-      estilista: "Ana Beatriz Rutini",
+      estilista: "Miuccia Prada",
       encomenda: "Terno Social",
       dataHora: "01/10/2024 - 10:00",
       valor: "R$ 700,00",
@@ -25,7 +25,7 @@ export function HomeEncomendas() {
     {
       id: 3,
       cliente: "Joana Silveira Araújo",
-      estilista: "Nise da Silveira",
+      estilista: "Gianni Versace",
       encomenda: "Blusa Bordada",
       dataHora: "02/10/2024 - 11:45",
       valor: "R$ 300,00",
@@ -33,7 +33,7 @@ export function HomeEncomendas() {
     {
       id: 4,
       cliente: "Marcelo Bueno",
-      estilista: "Sandra Rocha",
+      estilista: "Alexander McQueen",
       encomenda: "Calça Casual",
       dataHora: "02/10/2024 - 15:00",
       valor: "R$ 400,00",
@@ -41,7 +41,7 @@ export function HomeEncomendas() {
     {
       id: 5,
       cliente: "Solange Carvalho",
-      estilista: "Sandra Rocha",
+      estilista: "Coco Chanel",
       encomenda: "Vestido Sereia",
       dataHora: "03/10/2024 - 17:30",
       valor: "R$ 200,00",

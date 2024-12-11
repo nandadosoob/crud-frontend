@@ -4,14 +4,16 @@ import { Link } from "react-router-dom";
 
 export function HomeEstilistas() {
   const estilistas = [
-    { id: 1, nome: "Flávia Cristina" },
-    { id: 2, nome: "Ana Beatriz Rutini" },
-    { id: 3, nome: "Nise da Silveira" },
-    { id: 4, nome: "Sandra Rocha" },
-    { id: 5, nome: "Amelie Albuquerque Marques" },
-    { id: 6, nome: "Janete Martins" },
-    { id: 7, nome: "Helton Mazutti" },
-    { id: 8, nome: "Hugo Antunes Silva" },
+    { id: 1, nome: "Coco Chanel" },
+    { id: 2, nome: "Christian Dior" },
+    { id: 3, nome: "Valentino Garavani" },
+    { id: 4, nome: "Miuccia Prada" },
+    { id: 5, nome: "Giorgio Armani" },
+    { id: 6, nome: "Gianni Versace" },
+    { id: 7, nome: "Alexander McQueen" },
+    { id: 8, nome: "John Galliano" },
+    { id: 9, nome: "Vivienne Westwood" },
+
   ];
 
   const [search, setSearch] = useState("");
