@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-export default function NovaEncomenda() {
+export default function EditaEncomenda() {
     const [cliente, setCliente] = useState("")
     const [estilista, setEstilista] = useState("")
     const [tipoEncomenda, setTipoEncomenda] = useState("")
@@ -23,7 +23,7 @@ export default function NovaEncomenda() {
 
         try {
             const resposta = await fetch("https://final-project-dw2.onrender.com/encomendas", {
-                method: "POST",
+                method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
                 },
@@ -82,11 +82,15 @@ export default function NovaEncomenda() {
                 <input onChange={(event) => setValor(event.target.value)}
                 value={valor} /></div>
             <div>
-                <button type="submit" className="bg-slate-500">Registrar pedido</button>
+                <button type="submit" className="bg-slate-500">Salvar edições do pedido</button>
             </div>
-            <Link to="/HomeEncomendas" className="hover:underline">
-                <button type="submit" className="bg-slate-500">Cancelar registro</button>
-            </Link>
+            <div>
+                <button className="bg-slate-500">
+                    <Link to="/HomeEncomendas" className="hover:underline">
+                    Cancelar edições
+                    </Link>
+                </button>
+            </div>
         </form>
 
         // <div className="text-gray-700 border-b border-gray-200 hover:bg-gray-100 flex "

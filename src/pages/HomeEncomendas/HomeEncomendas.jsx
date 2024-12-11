@@ -78,6 +78,27 @@ export function HomeEncomendas() {
     setFilteredEncomendas(filtered);
   };
 
+  const [filtraEncomendas, setFiltraEncomendas] = useState(encomendas);
+
+  const deletarEncomenda = async (id) => {
+    try {
+      const resposta = await fetch(`https://final-project-dw2.onrender.com/encomendas/${id}`, {
+        method: "DELETE",  // Método DELETE para excluir a encomenda
+      });
+
+      if (resposta.status === 200) {
+        // Se a encomenda foi deletada com sucesso, atualiza a lista
+        setFiltraEncomendas(filtraEncomendas.filter((encomenda) => encomenda.id !== id));
+        alert("Encomenda deletada com sucesso!");
+      } else {
+        alert("Erro ao deletar a encomenda.");
+      }
+    } catch (error) {
+      console.error("Erro ao conectar com o servidor:", error);
+      alert("Erro ao conectar com o servidor.");
+    }
+  };
+
   return (
     <Pagina>
       {/* Cabeçalho */}
@@ -108,9 +129,9 @@ export function HomeEncomendas() {
             <div className="flex items-center space-x-4">
               <h1 className="text-2xl font-bold">Encomendas</h1>
               <button className="px-3 py-2 bg-white text-pink-800 rounded-md hover:bg-gray-200 text-lg font-semibold border border-pink-800"
-              ><Link to={NovaEncomenda} className="hover:underline">
-                Nova Encomenda
-              </Link>
+              ><Link to="/NovaEncomenda" className="hover:underline">
+                  Nova Encomenda
+                </Link>
               </button>
             </div>
 
@@ -134,14 +155,15 @@ export function HomeEncomendas() {
                 className="border border-gray-300 rounded-md px-4 py-2 text-lg focus:outline-none focus:ring focus:ring-gray-200"
               >
                 <option value="">Todos os estilistas</option>
-                <option value="Flávia Cristina">Flávia Cristina</option>
-                <option value="Ana Beatriz Rutini">Ana Beatriz Rutini</option>
-                <option value="Hugo Antunes Silva">Hugo Antunes Silva</option>
-                <option value="Helton Mazutti">Helton Mazutti</option>
-                <option value="Janete Martins">Janete Martins</option>
-                <option value="Amelie Albuquerque Marques">Amelie Albuquerque Marques</option>
-                <option value="Nise da Silveira">Nise da Silveira</option>
-                <option value="Sandra Rocha">Sandra Rocha</option>
+                <option value="Coco Chanel">Coco Chanel </option>
+                <option value="Christian Dior">Christian Dior</option>
+                <option value="Valentino Garavani">Valentino Garavani</option>
+                <option value="Miuccia Prada">Miuccia Prada</option>
+                <option value="Giorgio Armani">Giorgio Armani</option>
+                <option value="Gianni Versace ">Gianni Versace </option>
+                <option value="Alexander McQueen">Alexander McQueen</option>
+                <option value="John Galliano">John Galliano</option>
+                <option value="Vivienne Westwood">Vivienne Westwood</option>
               </select>
               <button
                 onClick={handleFilter}
@@ -177,10 +199,12 @@ export function HomeEncomendas() {
                   <td className="py-4 px-4">{encomenda.dataHora}</td>
                   <td className="py-4 px-4">{encomenda.valor}</td>
                   <td className="py-4 px-4 text-center">
-                    <button className="bg-pink-800 text-white hover:bg-pink-900 px-3 py-2 rounded-md mr-2">
-                      ✎
-                    </button>
-                    <button className="bg-gray-400 text-white hover:bg-gray-500 px-3 py-2 rounded-md">
+                    <Link to="/EditaEncomenda" className="hover:underline">
+                      <button className="bg-pink-800 text-white hover:bg-pink-900 px-3 py-2 rounded-md mr-2">
+                        ✎
+                      </button>
+                    </Link>
+                    <button className="bg-gray-400 text-white hover:bg-gray-500 px-3 py-2 rounded-md" onClick={() => deletarEncomenda(encomenda.id)}>
                       🗑
                     </button>
                   </td>
@@ -188,7 +212,7 @@ export function HomeEncomendas() {
               ))}
             </tbody>
           </table>
-  
+
 
         </div>
       </div>

@@ -8,6 +8,7 @@ import { NovaConta } from './pages/NovaConta/NovaConta.jsx'
 import { HomeEncomendas } from './pages/HomeEncomendas/HomeEncomendas.jsx'
 import { HomeEstilistas } from './pages/HomeEstilistas/HomeEstilistas.jsx'
 import NovaEncomenda from './pages/HomeEncomendas/NovaEncomenda.jsx'
+import EditaEncomenda from './pages/HomeEncomendas/EditaEncomenda.jsx'
 
 
 
@@ -19,6 +20,8 @@ const rotas = createBrowserRouter(createRoutesFromElements(
     <Route path="homeEncomendas" element={<HomeEncomendas/>} />
     <Route path="homeEstilistas" element={<HomeEstilistas/>} />
     <Route path="novaEncomenda" element={<NovaEncomenda/>} />
+    <Route path="novaEncomenda" element={<NovaEncomenda/>} />
+    <Route path="EditaEncomenda" element={<EditaEncomenda/>} />
 
     {/* <Route path="*" element={<Pagina404/>} /> */}
   </Route>
