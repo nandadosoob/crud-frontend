@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Pagina } from "../../components/Pagina";
 import { Link } from "react-router-dom";
 import { use } from "react";
@@ -10,51 +10,69 @@ export function HomeEncomendas() {
       id: 1,
       cliente: "Heber Stein Mazutti",
       estilista: "Vivienne Westwood",
-      encomenda: "Vestido Sob Medida",
-      dataHora: "01/10/2024 - 08:30",
+      tipoencomenda: "Vestido Sob Medida",
+      horariopedido: "01/10/2024 - 08:30",
       valor: "R$ 500,00",
     },
     {
       id: 2,
       cliente: "Marcos Antunes",
       estilista: "Miuccia Prada",
-      encomenda: "Terno Social",
-      dataHora: "01/10/2024 - 10:00",
+      tipoencomenda: "Terno Social",
+      horariopedido: "01/10/2024 - 10:00",
       valor: "R$ 700,00",
     },
     {
       id: 3,
       cliente: "Joana Silveira Araújo",
       estilista: "Gianni Versace",
-      encomenda: "Blusa Bordada",
-      dataHora: "02/10/2024 - 11:45",
+      tipoencomenda: "Blusa Bordada",
+      horariopedido: "02/10/2024 - 11:45",
       valor: "R$ 300,00",
     },
     {
       id: 4,
       cliente: "Marcelo Bueno",
       estilista: "Alexander McQueen",
-      encomenda: "Calça Casual",
-      dataHora: "02/10/2024 - 15:00",
+      tipoencomenda: "Calça Casual",
+      horariopedido: "02/10/2024 - 15:00",
       valor: "R$ 400,00",
     },
     {
       id: 5,
       cliente: "Solange Carvalho",
       estilista: "Coco Chanel",
-      encomenda: "Vestido Sereia",
-      dataHora: "03/10/2024 - 17:30",
+      tipoencomenda: "Vestido Sereia",
+      horariopedido: "03/10/2024 - 17:30",
       valor: "R$ 200,00",
     },
   ];
 
-  const [filteredEncomendas, setFilteredEncomendas] = useState(encomendas);
   const [dataInicio, setDataInicio] = useState('');
   const [dataFim, setDataFim] = useState('');
   const [estilista, setEstilista] = useState('');
+  
+  const [encomenda, setEncomenda] = useState(encomendas)
+  const [filteredEncomendas, setFilteredEncomendas] = useState(encomenda);
+
+
+
+  useEffect(()=>{
+    fetch(`https://final-project-dw2.onrender.com/encomendas`, {
+      method: "GET",  // Método DELETE para excluir a encomenda
+    }).then(e => { 
+        e.json().then(r => {
+          setEncomenda(r)
+        setFilteredEncomendas(r)})
+      })
+
+  }, [])
+  
 
   const handleFilter = () => {
-    let filtered = encomendas;
+    console.log(encomenda)
+    let filtered = encomenda;
+
 
     const formatDate = (dateStr) => {
       const [day, month, year] = dateStr.split(' - ')[0].split('/');
@@ -78,7 +96,7 @@ export function HomeEncomendas() {
     setFilteredEncomendas(filtered);
   };
 
-  const [filtraEncomendas, setFiltraEncomendas] = useState(encomendas);
+  const [filtraEncomendas, setFiltraEncomendas] = useState(encomenda);
 
   const deletarEncomenda = async (id) => {
     try {
@@ -195,11 +213,11 @@ export function HomeEncomendas() {
                 >
                   <td className="py-4 px-4">{encomenda.cliente}</td>
                   <td className="py-4 px-4">{encomenda.estilista}</td>
-                  <td className="py-4 px-4">{encomenda.encomenda}</td>
-                  <td className="py-4 px-4">{encomenda.dataHora}</td>
+                  <td className="py-4 px-4">{encomenda.tipoencomenda}</td>
+                  <td className="py-4 px-4">{encomenda.horariopedido}</td>
                   <td className="py-4 px-4">{encomenda.valor}</td>
                   <td className="py-4 px-4 text-center">
-                    <Link to="/EditaEncomenda" className="hover:underline">
+                    <Link to={`/EditaEncomenda/${encomenda.id}`} className="hover:underline">
                       <button className="bg-pink-800 text-white hover:bg-pink-900 px-3 py-2 rounded-md mr-2">
                         ✎
                       </button>

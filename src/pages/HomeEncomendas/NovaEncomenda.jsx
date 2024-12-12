@@ -7,6 +7,8 @@ export default function NovaEncomenda() {
   const [tipoEncomenda, setTipoEncomenda] = useState("");
   const [valor, setValor] = useState("");
 
+  const [pedidoFeito, setPedidoFeito] = useState(false);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -16,6 +18,7 @@ export default function NovaEncomenda() {
       estilista,
       tipoEncomenda,
       valor,
+      horarioPedido,
     };
     console.log(encomendas, horarioPedido);
 
@@ -27,7 +30,7 @@ export default function NovaEncomenda() {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(encomendas, horarioPedido),
+          body: JSON.stringify(encomendas),
         }
       );
 
@@ -38,6 +41,7 @@ export default function NovaEncomenda() {
         setEstilista("");
         setTipoEncomenda("");
         setValor("");
+        setPedidoFeito(true)
       } else {
         alert(`Erro no cadastro; ${resposta.status}`);
       }
@@ -125,12 +129,13 @@ export default function NovaEncomenda() {
             >
               Cancelar
             </Link>
-            <button
-              type="submit"
-              className="w-full bg-pink-700 text-white py-2 px-4 rounded-md font-medium hover:bg-pink-800 focus:outline-none focus:ring focus:ring-pink-200"
-            >
-              Registrar Pedido
-            </button>
+            {pedidoFeito ? (<Link to="/HomeEncomendas" className="w-full bg-pink-700 text-white py-2 px-4 rounded-md font-medium hover:bg-pink-800 focus:outline-none focus:ring focus:ring-pink-200">Voltar à lista de cadastros</Link>) : (
+              <button
+                type="submit"
+                className="w-full bg-pink-700 text-white py-2 px-4 rounded-md font-medium hover:bg-pink-800 focus:outline-none focus:ring focus:ring-pink-200">
+                Registrar Pedido
+              </button>
+            )}
           </div>
         </form>
       </div>

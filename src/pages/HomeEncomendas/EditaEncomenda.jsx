@@ -1,43 +1,52 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 export default function EditaEncomenda() {
+  const { id } = useParams("")
   const [cliente, setCliente] = useState("");
   const [estilista, setEstilista] = useState("");
   const [tipoEncomenda, setTipoEncomenda] = useState("");
   const [valor, setValor] = useState("");
+
+  const [pedidoFeito, setPedidoFeito] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     const horarioPedido = new Date().toISOString();
     const encomendas = {
+      id,
       cliente,
       estilista,
       tipoEncomenda,
       valor,
+      horarioPedido
     };
     console.log(encomendas, horarioPedido);
 
     try {
       const resposta = await fetch(
-        "https://final-project-dw2.onrender.com/encomendas",
+        `https://final-project-dw2.onrender.com/encomendas/${id}`
+        ,
         {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(encomendas, horarioPedido),
+          body: JSON.stringify(encomendas),
         }
       );
 
       if (resposta.status === 201) {
         alert("Cadastro concluído");
 
+
         setCliente("");
         setEstilista("");
         setTipoEncomenda("");
         setValor("");
+        setPedidoFeito(true)
+
       } else {
         alert(`Erro no cadastro; ${resposta.status}`);
       }
@@ -46,7 +55,7 @@ export default function EditaEncomenda() {
       alert("Erro ao conectar com o servidor.");
     }
   };
-    // const [criaPedido, setCriaPedido] = useState("");
+  // const [criaPedido, setCriaPedido] = useState("");
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-pink-950 py-8 px-6">
@@ -71,7 +80,7 @@ export default function EditaEncomenda() {
           <div>
             <label className="block text-gray-700 font-medium mb-2">
               Estilista
-               {/* <input onChange={(event) => setEstilista(event.target.value)}
+              {/* <input onChange={(event) => setEstilista(event.target.value)}
                 value={estilista} /> */}
             </label>
             <select
@@ -124,21 +133,20 @@ export default function EditaEncomenda() {
             >
               Cancelar Edições
             </Link>
-            <button
-              type="submit"
-              className="w-full bg-pink-700 text-white py-2 px-4 rounded-md font-medium hover:bg-pink-800 focus:outline-none focus:ring focus:ring-pink-200"
-            >
-              Salvar Edições do Pedido
-            </button>
+            {pedidoFeito ? (<Link to="/HomeEncomendas" className="w-full bg-pink-700 text-white py-2 px-4 rounded-md font-medium hover:bg-pink-800 focus:outline-none focus:ring focus:ring-pink-200">Voltar à lista de cadastros</Link>) : (
+              <button
+                type="submit"
+                className="w-full bg-pink-700 text-white py-2 px-4 rounded-md font-medium hover:bg-pink-800 focus:outline-none focus:ring focus:ring-pink-200"
+              >
+                Salvar Edições do Pedido
+              </button>
+            )}
           </div>
         </form>
 
       </div>
     </div>
 
-        // <div className="text-gray-700 border-b border-gray-200 hover:bg-gray-100 flex "
-        // onSubmit={handleSubmit}>
-        // </div>
 
   );
 }

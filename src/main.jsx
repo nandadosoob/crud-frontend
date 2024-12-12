@@ -21,9 +21,8 @@ const rotas = createBrowserRouter(createRoutesFromElements(
     <Route path="homeEstilistas" element={<HomeEstilistas/>} />
     <Route path="novaEncomenda" element={<NovaEncomenda/>} />
     <Route path="novaEncomenda" element={<NovaEncomenda/>} />
-    <Route path="EditaEncomenda" element={<EditaEncomenda/>} />
+    <Route path="EditaEncomenda/:id" element={<EditaEncomenda/>} />
 
-    {/* <Route path="*" element={<Pagina404/>} /> */}
   </Route>
 
  
