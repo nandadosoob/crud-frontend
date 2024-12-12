@@ -107,9 +107,10 @@ export function HomeEncomendas() {
       if (resposta.status === 200) {
         // Se a encomenda foi deletada com sucesso, atualiza a lista
         setFiltraEncomendas(filtraEncomendas.filter((encomenda) => encomenda.id !== id));
-        alert("Encomenda deletada com sucesso!");
-      } else {
         alert("Erro ao deletar a encomenda.");
+      } else {
+        alert("Encomenda deletada com sucesso!");
+        window.location.reload();
       }
     } catch (error) {
       console.error("Erro ao conectar com o servidor:", error);
