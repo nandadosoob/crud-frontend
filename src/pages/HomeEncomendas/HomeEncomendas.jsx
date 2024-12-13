@@ -6,53 +6,53 @@ import NovaEncomenda from "./NovaEncomenda";
 
 export function HomeEncomendas() {
   const encomendas = [
-    {
-      id: 1,
-      cliente: "Heber Stein Mazutti",
-      estilista: "Vivienne Westwood",
-      tipoencomenda: "Vestido Sob Medida",
-      horariopedido: "01/10/2024 - 08:30",
-      valor: "R$ 500,00",
-    },
-    {
-      id: 2,
-      cliente: "Marcos Antunes",
-      estilista: "Miuccia Prada",
-      tipoencomenda: "Terno Social",
-      horariopedido: "01/10/2024 - 10:00",
-      valor: "R$ 700,00",
-    },
-    {
-      id: 3,
-      cliente: "Joana Silveira Araújo",
-      estilista: "Gianni Versace",
-      tipoencomenda: "Blusa Bordada",
-      horariopedido: "02/10/2024 - 11:45",
-      valor: "R$ 300,00",
-    },
-    {
-      id: 4,
-      cliente: "Marcelo Bueno",
-      estilista: "Alexander McQueen",
-      tipoencomenda: "Calça Casual",
-      horariopedido: "02/10/2024 - 15:00",
-      valor: "R$ 400,00",
-    },
-    {
-      id: 5,
-      cliente: "Solange Carvalho",
-      estilista: "Coco Chanel",
-      tipoencomenda: "Vestido Sereia",
-      horariopedido: "03/10/2024 - 17:30",
-      valor: "R$ 200,00",
-    },
+    // {
+    //   id: 1,
+    //   cliente: "Heber Stein Mazutti",
+    //   estilista: "Vivienne Westwood",
+    //   tipoencomenda: "Vestido Sob Medida",
+    //   horariopedido: "01/10/2024 - 08:30",
+    //   valor: "R$ 500,00",
+    // },
+    // {
+    //   id: 2,
+    //   cliente: "Marcos Antunes",
+    //   estilista: "Miuccia Prada",
+    //   tipoencomenda: "Terno Social",
+    //   horariopedido: "01/10/2024 - 10:00",
+    //   valor: "R$ 700,00",
+    // },
+    // {
+    //   id: 3,
+    //   cliente: "Joana Silveira Araújo",
+    //   estilista: "Gianni Versace",
+    //   tipoencomenda: "Blusa Bordada",
+    //   horariopedido: "02/10/2024 - 11:45",
+    //   valor: "R$ 300,00",
+    // },
+    // {
+    //   id: 4,
+    //   cliente: "Marcelo Bueno",
+    //   estilista: "Alexander McQueen",
+    //   tipoencomenda: "Calça Casual",
+    //   horariopedido: "02/10/2024 - 15:00",
+    //   valor: "R$ 400,00",
+    // },
+    // {
+    //   id: 5,
+    //   cliente: "Solange Carvalho",
+    //   estilista: "Coco Chanel",
+    //   tipoencomenda: "Vestido Sereia",
+    //   horariopedido: "03/10/2024 - 17:30",
+    //   valor: "R$ 200,00",
+    // },
   ];
 
   const [dataInicio, setDataInicio] = useState('');
   const [dataFim, setDataFim] = useState('');
   const [estilista, setEstilista] = useState('');
   
-  const [encomenda, setEncomenda] = useState(encomendas)
+  const [encomenda, setEncomenda] = useState('')
   const [filteredEncomendas, setFilteredEncomendas] = useState(encomenda);
 
 

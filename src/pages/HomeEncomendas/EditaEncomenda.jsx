@@ -26,7 +26,7 @@ export default function EditaEncomenda() {
     
 
     try {
-      const resposta = await fetch(`https://final-project-dw2.onrender.com/encomendas/${id}`,
+      const resposta = await fetch(`https://final-project-dw2.onrender.com/encomendas/${encomendas.id}`,
         {
           method: "PUT",
           headers: {
