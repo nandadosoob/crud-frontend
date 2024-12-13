@@ -93,12 +93,14 @@ export function HomeEstilistas() {
                 >
                   <td className="py-4 px-4">{estilista.nome}</td>
                   <td className="py-4 px-4 text-right">
-                    <button className="bg-gray-600 text-white hover:bg-gray-700 px-3 py-2 rounded-md mr-2">
-                      ✎
-                    </button>
-                    <button className="bg-gray-400 text-white hover:bg-gray-500 px-3 py-2 rounded-md">
-                      🗑
-                    </button>
+                  <button className="bg-gray-600 text-white hover:bg-gray-700 px-3 py-2 rounded-md mr-2">
+                  <img src="pencil-solid.svg" alt="Editar" className="w-5 h-5 inline-block" />
+                  </button>
+
+                  <button className="bg-gray-400 text-white hover:bg-gray-500 px-3 py-2 rounded-md">
+                  <img src="trash-solid.svg" alt="Deletar" className="w-5 h-5 inline-block" />
+                  </button>
+
                   </td>
                 </tr>
               ))}

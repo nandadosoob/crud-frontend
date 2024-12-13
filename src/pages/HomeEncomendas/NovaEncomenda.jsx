@@ -18,9 +18,8 @@ export default function NovaEncomenda() {
       estilista,
       tipoEncomenda,
       valor,
-      horarioPedido,
     };
-    console.log(encomendas, horarioPedido);
+    // console.log(encomendas, horarioPedido);
 
     try {
       const resposta = await fetch(
@@ -34,7 +33,7 @@ export default function NovaEncomenda() {
         }
       );
 
-      if (resposta.status === 201) {
+      if (resposta.status === 204) {
         alert("Cadastro concluído");
 
         setCliente("");
@@ -54,7 +53,7 @@ export default function NovaEncomenda() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-900 py-8 px-6">
       <div className="bg-white shadow-md rounded-lg p-8 max-w-3xl w-full">
-        <h1 className="text-2xl font-bold mb-6 text-gray-700 text-center">
+        <h1 className="text-2xl font-bold mb-6 text-pink-700 text-center">
           Nova Encomenda
         </h1>
         <form onSubmit={handleSubmit} className="space-y-6">
@@ -129,7 +128,7 @@ export default function NovaEncomenda() {
             >
               Cancelar
             </Link>
-            {pedidoFeito ? (<Link to="/HomeEncomendas" className="w-full bg-pink-700 text-white py-2 px-4 rounded-md font-medium hover:bg-pink-800 focus:outline-none focus:ring focus:ring-pink-200">Voltar à lista de cadastros</Link>) : (
+            {pedidoFeito ? (<Link to="/HomeEncomendas" className="w-full text-center bg-pink-700 text-white py-2 px-4 rounded-md font-medium hover:bg-pink-800 focus:outline-none focus:ring focus:ring-pink-200">Voltar à lista de cadastros</Link>) : (
               <button
                 type="submit"
                 className="w-full bg-pink-700 text-white py-2 px-4 rounded-md font-medium hover:bg-pink-800 focus:outline-none focus:ring focus:ring-pink-200">

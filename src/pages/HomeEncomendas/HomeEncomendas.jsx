@@ -5,57 +5,14 @@ import { use } from "react";
 import NovaEncomenda from "./NovaEncomenda";
 
 export function HomeEncomendas() {
-  const encomendas = [
-    // {
-    //   id: 1,
-    //   cliente: "Heber Stein Mazutti",
-    //   estilista: "Vivienne Westwood",
-    //   tipoencomenda: "Vestido Sob Medida",
-    //   horariopedido: "01/10/2024 - 08:30",
-    //   valor: "R$ 500,00",
-    // },
-    // {
-    //   id: 2,
-    //   cliente: "Marcos Antunes",
-    //   estilista: "Miuccia Prada",
-    //   tipoencomenda: "Terno Social",
-    //   horariopedido: "01/10/2024 - 10:00",
-    //   valor: "R$ 700,00",
-    // },
-    // {
-    //   id: 3,
-    //   cliente: "Joana Silveira Araújo",
-    //   estilista: "Gianni Versace",
-    //   tipoencomenda: "Blusa Bordada",
-    //   horariopedido: "02/10/2024 - 11:45",
-    //   valor: "R$ 300,00",
-    // },
-    // {
-    //   id: 4,
-    //   cliente: "Marcelo Bueno",
-    //   estilista: "Alexander McQueen",
-    //   tipoencomenda: "Calça Casual",
-    //   horariopedido: "02/10/2024 - 15:00",
-    //   valor: "R$ 400,00",
-    // },
-    // {
-    //   id: 5,
-    //   cliente: "Solange Carvalho",
-    //   estilista: "Coco Chanel",
-    //   tipoencomenda: "Vestido Sereia",
-    //   horariopedido: "03/10/2024 - 17:30",
-    //   valor: "R$ 200,00",
-    // },
-  ];
+  const encomendas = [];
 
   const [dataInicio, setDataInicio] = useState('');
   const [dataFim, setDataFim] = useState('');
   const [estilista, setEstilista] = useState('');
   
-  const [encomenda, setEncomenda] = useState('')
+  const [encomenda, setEncomenda] = useState(encomendas)
   const [filteredEncomendas, setFilteredEncomendas] = useState(encomenda);
-
-
 
   useEffect(()=>{
     fetch(`https://final-project-dw2.onrender.com/encomendas`, {
@@ -218,14 +175,17 @@ export function HomeEncomendas() {
                   <td className="py-4 px-4">{encomenda.horariopedido}</td>
                   <td className="py-4 px-4">{encomenda.valor}</td>
                   <td className="py-4 px-4 text-center">
-                    <Link to={`/EditaEncomenda/${encomenda.id}`} className="hover:underline">
-                      <button className="bg-pink-800 text-white hover:bg-pink-900 px-3 py-2 rounded-md mr-2">
-                        ✎
-                      </button>
-                    </Link>
-                    <button className="bg-gray-400 text-white hover:bg-gray-500 px-3 py-2 rounded-md" onClick={() => deletarEncomenda(encomenda.id)}>
-                      🗑
-                    </button>
+                  <Link to={`/EditaEncomenda/${encomenda.id}`} state={encomenda} className="hover:underline" >
+                  <button className="bg-pink-700 text-white hover:bg-pink-800 px-3 py-3 rounded-md mr-2">
+                  <img src="pencil-solid.svg" alt="Editar" className="w-5 h-5" />
+                  </button>
+                  </Link>
+                  <button 
+                  className="bg-gray-400 text-white hover:bg-gray-500 px-3 py-3 rounded-md" 
+                  onClick={() => deletarEncomenda(encomenda.id)}>
+                  <img src="trash-solid.svg" alt="Deletar" className="w-5 h-5" />
+                  </button>
+
                   </td>
                 </tr>
               ))}

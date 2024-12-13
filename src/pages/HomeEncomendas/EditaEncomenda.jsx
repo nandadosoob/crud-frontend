@@ -1,49 +1,63 @@
-import { useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useState, useEffect} from "react";
+import { Link, useParams, useLocation } from "react-router-dom";
 
 export default function EditaEncomenda() {
-  const { id } = useParams("");
+  const { id } = useParams();
   const [cliente, setCliente] = useState("");
   const [estilista, setEstilista] = useState("");
-  const [tipoEncomenda, setTipoEncomenda] = useState("");
+  const [tipoencomenda, setTipoencomenda] = useState("");
   const [valor, setValor] = useState("");
-
   const [pedidoFeito, setPedidoFeito] = useState(false);
+  const location = useLocation()
+  const encom = location.state
+
+  useEffect(() => {
+    if (encom) {
+      setCliente(encom.cliente || "");
+      setEstilista(encom.estilista || "");
+      setTipoencomenda(encom.tipoencomenda || "");
+      setValor(encom.valor || "");
+      console.log(tipoencomenda)
+    }
+  }, [encom]);
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+    // const [editarValores, setEditarValores] = useState("")
+    
     const horarioPedido = new Date().toISOString();
     const encomendas = {
-      id,
       cliente,
       estilista,
-      tipoEncomenda,
+      tipoEncomenda:tipoencomenda,
       valor,
-      horarioPedido,
     };
-    console.log(encomendas, horarioPedido);
+    // console.log(encomendas, horarioPedido);
     
 
     try {
-      const resposta = await fetch(`https://final-project-dw2.onrender.com/encomendas/${encomendas.id}`,
+      console.log(id)
+      console.log(encomendas)
+
+      const resposta = await fetch(`https://final-project-dw2.onrender.com/encomendas/${id}`,
         {
           method: "PUT",
           headers: {
-            "Content-Type": "application/json",
+            "Content-Type": "application/json", 
           },
           body: JSON.stringify(encomendas),
         }
       );
       console.log(resposta)
 
-      if (resposta.status === 201) {
+      if (resposta.status === 204) {
         alert("Cadastro concluído");
 
 
         setCliente("");
         setEstilista("");
-        setTipoEncomenda("");
+        setTipoencomenda("");
         setValor("");
         setPedidoFeito(true)
 
@@ -104,8 +118,8 @@ export default function EditaEncomenda() {
             </label>
             <input
               type="text"
-              onChange={(event) => setTipoEncomenda(event.target.value)}
-              value={tipoEncomenda}
+              onChange={(event) => setTipoencomenda(event.target.value)}
+              value={tipoencomenda}
               className="w-full border border-gray-300 rounded-md px-4 py-2 text-gray-700 focus:outline-none focus:ring focus:ring-gray-200"
               placeholder="Digite o tipo de encomenda"
               required
